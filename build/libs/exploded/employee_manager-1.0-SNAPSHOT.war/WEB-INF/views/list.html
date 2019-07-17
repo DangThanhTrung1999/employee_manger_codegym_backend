@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List employee</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <style>
+        #button_add {
+            background-color: aqua;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1 style="margin-left: 375px">List employee</h1>
+    <div style="float: left">
+        <h3><a th:href="@{/create}" id="button_add">Create new employee</a></h3>
+    </div>
+    <div style="float: right">
+        <form th:action="@{/find}" method="post">
+            <table>
+                <tr>
+                    <td><input type="text" name="key" style="width: 400px; height: 45px" placeholder="Enter employee code or full name to find"></td>
+                    <td>
+                        <button>Find</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <p th:text="${notify}"></p>
+    </div>
+    <table border="1px" class="table table-hover">
+        <thead>
+        <tr class="table-danger">
+            <th>Employee code</th>
+            <th>Employee group</th>
+            <th>Full name</th>
+            <th>Gender</th>
+            <th>Phone number</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <th:block th:each="employee: ${employees}">
+            <tr class="table-light">
+                <td th:text="${employee.employeeCode}"></td>
+                <td th:text="${employee.employeeGroup}"></td>
+                <td th:text="${employee.fullName}"></td>
+                <td th:text="${employee.gender}"></td>
+                <td th:text="${employee.phoneNumber}"></td>
+                <td><a th:href="@{/edit/__${employee.id}__}">Edit</a></td>
+                <td><a th:href="@{/delete/__${employee.id}__}">Delete</a></td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Result search</title>
+</head>
+<body>
+<body>
+<h3><a th:href="@{/}">Back list employee</a></h3>
+<table>
+    <tr>
+        <td>Employee code:</td>
+        <td th:text="${employee.employeeCode}"></td>
+    </tr>
+    <tr>
+        <td>Employee group</td>
+        <td th:text="${employee.employeeGroup}"></td>
+    </tr>
+    <tr>
+        <td>Full name:</td>
+        <td th:text="${employee.fullName}"></td>
+    </tr>
+    <tr>
+        <td>Gender:</td>
+        <td th:text="${employee.gender}"></td>
+    </tr>
+    <tr>
+        <td>Phone number:</td>
+        <td th:text="${employee.phoneNumber}"></td>
+    </tr>
+    <tr>
+        <td>Identity code:</td>
+        <td th:text="${employee.identityCode}"></td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td th:text="${employee.email}"></td>
+    </tr>
+    <tr>
+        <td>Address:</td>
+        <td th:text="${employee.address}"></td>
+    </tr>
+</table>
+</body>
+</body>
+</html>

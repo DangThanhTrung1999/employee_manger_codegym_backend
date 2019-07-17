@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Customer</title>
+</head>
+<body>
+<h1>Edit employee</h1>
+<h3><a th:href="@{/}">Back list employee</a></h3>
+<form th:action="@{/edit}" method="post" th:object="${employee}">
+    <input type="hidden" th:field="*{id}">
+    <fieldset>
+        <table>
+            <tr>
+                <td>Employee code</td>
+                <td><input type="text" th:field="*{employeeCode}"></td>
+                <td th:if="${#fields.hasErrors()}" th:errors="*{employeeCode}"></td>
+            </tr>
+            <tr>
+                <td>Employee:</td>
+                <td>
+                    <select th:field="*{employeeGroup}">
+                        <option value="System manger">System manager</option>
+                        <option value="HRM">HRM</option>
+                        <option value="Receptionist">Receptionist</option>
+                        <option value="Room manager">Room manager</option>
+                        <option value="Service manager">Service manager</option>
+                    </select>
+                </td>
+                <td th:if="${#fields.hasErrors()}" th:errors="*{employeeGroup}"></td>
+            </tr>
+            <tr>
+                <td>Full name</td>
+                <td><input type="text" th:field="*{fullName}"></td>
+                <td th:if="${#fields.hasErrors()}" th:errors="*{fullName}"></td>
+            </tr>
+            <tr>
+                <td>Year of Birth:</td>
+                <td>
+                    <select th:field="*{yearOfBirth}">
+                        <option th:each="n : ${#numbers.sequence(1950, 2019)}"
+                                th:value="${n}"
+                                th:text="${n}">
+                        </option>
+                    </select>
+                </td>
+                <td th:if="${#fields.hasErrors()}" th:errors="*{yearOfBirth}"></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>
+                    <select th:field="*{gender}">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </td>
+                <td th:if="${#fields.hasErrors()}" th:errors="*{gender}"></td>
+            </tr>
+            <tr>
+                <td>Phone number</td>
+                <td><input type="text" th:field="*{phoneNumber}"></td>
+                <td th:if="${#fields.hasErrors()}" th:errors="*{phoneNumber}"></td>
+            </tr>
+            <tr>
+                <td>Identity code</td>
+                <td><input type="text" th:field="*{identityCode}"></td>
+                <td th:if="${#fields.hasErrors()}" th:errors="*{identityCode}"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" th:field="*{email}"></td>
+                <td th:if="${#fields.hasErrors()}" th:errors="*{email}"></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><input type="text" th:field="*{address}"></td>
+                <td th:if="${#fields.hasErrors()}" th:errors="*{address}"></td>
+            </tr>
+        </table>
+    </fieldset>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
